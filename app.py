@@ -16,7 +16,8 @@ logo_url = './assets/logo.png'
 #tokenkey = OpenAI(api_token=os.getenv('api_token'))
 
 #ambil api dari streamlit
-tokenkey=st.secrets["api_token"]
+api_dari_streamlit =st.secrets["api_token"]
+tokenkey = OpenAI(api_token=api_dari_streamlit)
 #========================
 
 modelOpenAI=tokenkey
