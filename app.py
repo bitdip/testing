@@ -13,13 +13,13 @@ def configure():
     load_dotenv()
 
 logo_url = './assets/logo.png'
-tokenkey = OpenAI(api_token=os.getenv('api_token'))
-modelOpenAI=tokenkey
+#tokenkey = OpenAI(api_token=os.getenv('api_token'))
 
 #ambil api dari streamlit
-#tokenkey=st.secrets["api_key"]
+tokenkey=st.secrets["api_token"]
 #========================
 
+modelOpenAI=tokenkey
 st.sidebar.image(logo_url)
 st.title("BitDip A.I tools - for Data Analytics ")
 upload_csv = st.file_uploader("upload file yang akan dianalisa dalam bentuk CSV", type=['csv'])
