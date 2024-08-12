@@ -22,6 +22,7 @@ tokenkey = OpenAI(api_token=api_dari_streamlit)
 
 modelOpenAI=tokenkey
 st.sidebar.image(logo_url)
+st.image(logo_url)
 st.title("BitDip A.I tools - for Data Analytics ")
 upload_csv = st.file_uploader("upload file yang akan dianalisa dalam bentuk CSV", type=['csv'])
 
