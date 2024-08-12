@@ -1,4 +1,4 @@
-from pandasai.llm.local_llm import  LocalLLM
+#from pandasai.llm.local_llm import  LocalLLM
 from pandasai.llm.openai import OpenAI
 from pandasai.llm.openai import openai
 import streamlit as st
