@@ -1,5 +1,5 @@
 import pandasai
-from pandasai.llm.local_llm import  LocalLLM
+from pandasai.llm.local_llm import LocalLLM
 from pandasai.llm.openai import OpenAI
 from pandasai.llm.openai import openai
 import streamlit as st
@@ -13,11 +13,11 @@ def configure():
     load_dotenv()
 
 logo_url = './assets/logo.png'
-#tokenkey = OpenAI(api_token=os.getenv('api_token'))
+tokenkey = OpenAI(api_token=os.getenv('api_token'))
 
 #ambil api dari streamlit
-api_dari_streamlit =st.secrets["api_token"]
-tokenkey = OpenAI(api_token=api_dari_streamlit)
+#api_dari_streamlit =st.secrets["api_token"]
+#tokenkey = OpenAI(api_token=api_dari_streamlit)
 #========================
 
 modelOpenAI=tokenkey
@@ -39,3 +39,4 @@ if upload_csv is not None:
         if prompt:
             with st.spinner("BitDip Agent melakukan anlisa data dan mencari jawaban untuk anda, mohon sabar cuy..."):
                 st.write(df.chat(prompt))
+                st.image(df.chat(prompt))
