@@ -22,7 +22,7 @@ def key_check():
     """
     try:
         # Attempting to get the OpenAI API key from the Databutton secrets store.
-        modelOpenAI#openai.api_key = db.secrets.get(name="OPENAI_API_KEY")
+        modelOpenAI #openai.api_key = db.secrets.get(name="OPENAI_API_KEY")
 
         # Check if the connection is established and models are available.
         if not openai.Model.list():

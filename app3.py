@@ -13,7 +13,6 @@ from PIL import Image
 import io
 import string
 import re
-from key_check import modelOpenAI
 from key_check import key_check
 
 logo_url = './assets/logo.png'
@@ -42,20 +41,20 @@ if upload_csv is not None:
         st.write(data)
 
 #df = SmartDataframe(data, config={"llm": modelOpenAI})
-df = SmartDataframe(data, config={"llm": "openai"})
+    df = SmartDataframe(data, config={"llm": modelOpenAI})
 
-prompt = st.text_area("Masukan pertanyaan anda terkait data tersebut.")
-respon =""
-if st.button("Cari Jawaban"):
-    if prompt:
-        with st.spinner("BitDip Agent melakukan anlisa data dan mencari jawaban untuk anda, mohon sabar cuy..."):
-            result = df.chat(prompt)
-            if isinstance(result, str):
-                respon=result
-                if ".png" in respon:
-                    st.image(respon)
+    prompt = st.text_area("Masukan pertanyaan anda terkait data tersebut.")
+    respon =""
+    if st.button("Cari Jawaban"):
+        if prompt:
+            with st.spinner("BitDip Agent melakukan anlisa data dan mencari jawaban untuk anda, mohon sabar cuy..."):
+                result = df.chat(prompt)
+                if isinstance(result, str):
+                    respon=result
+                    if ".png" in respon:
+                        st.image(respon)
+                    else:
+                        print(respon)
+                        st.write(respon)
                 else:
-                    print(respon)
-                    st.write(respon)
-            else:
-                st.write(result)
+                    st.write(result)
