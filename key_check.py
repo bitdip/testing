@@ -1,16 +1,17 @@
 #import databutton as db
 import streamlit as st
 import openai
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 import os
 
-def configure():
-    load_dotenv()
+#def configure():
+#    load_dotenv()
 
 #tokenkey = OpenAI(api_token=os.getenv('api_token'))
 #modelOpenAI=tokenkey
 
-modelOpenAI=openai.api_key=st.secrets["api_key"]
+tokenkey=st.secrets["api_key"]
+modelOpenAI=openai.api_key=tokenkey
 from utils import get_data
 
 
