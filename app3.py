@@ -24,22 +24,22 @@ def configure():
     st.image(logo_url,width=150)
     st.title("BitDip A.I tools - for Data Analytics ")
 
-#upload_csv = st.file_uploader("upload file yang akan dianalisa dalam bentuk CSV", type=['csv'])
+    #upload_csv = st.file_uploader("upload file yang akan dianalisa dalam bentuk CSV", type=['csv'])
 
-file_type =["csv", "xlsx", "xls"]
-upload_csv = st.file_uploader("Upload a data file", type=file_type)
+    file_type =["csv", "xlsx", "xls"]
+    upload_csv = st.file_uploader("Upload a data file", type=file_type)
 
-if upload_csv:
-    if upload_csv.name.endswith('.csv'):
-        data = pd.read_csv(upload_csv)
-    elif upload_csv.name.endswith('.xlsx') or upload_csv.name.endswith('.xls'):
-        data = pd.read_excel(upload_csv)
-    else:
-        data = None
+    if upload_csv:
+        if upload_csv.name.endswith('.csv'):
+            data = pd.read_csv(upload_csv)
+        elif upload_csv.name.endswith('.xlsx') or upload_csv.name.endswith('.xls'):
+            data = pd.read_excel(upload_csv)
+        else:
+            data = None
 
-if upload_csv is not None:
-    with st.expander("Show data"):
-        st.write(data)
+    if upload_csv is not None:
+        with st.expander("Show data"):
+            st.write(data)
 
     df = SmartDataframe(data, config={"llm": modelOpenAI})
 
