@@ -13,7 +13,7 @@ from PIL import Image
 import io
 import string
 import re
-
+from key_check import modelOpenAI
 from key_check import key_check
 
 logo_url = './assets/logo.png'
