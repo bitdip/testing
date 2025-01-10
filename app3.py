@@ -16,16 +16,13 @@ import string
 import re
 
 def configure():
+    logo_url = './assets/logo.png'
+    tokenkey = st.secrets["api_key"]
 
-logo_url = './assets/logo.png'
-tokenkey = st.secrets["api_key"]
-#tokenkey = OpenAI(api_token=os.getenv('api_token'))
-
-
-modelOpenAI=tokenkey
-st.sidebar.image(logo_url)
-st.image(logo_url,width=150)
-st.title("BitDip A.I tools - for Data Analytics ")
+    modelOpenAI=tokenkey
+    st.sidebar.image(logo_url)
+    st.image(logo_url,width=150)
+    st.title("BitDip A.I tools - for Data Analytics ")
 
 #upload_csv = st.file_uploader("upload file yang akan dianalisa dalam bentuk CSV", type=['csv'])
 
