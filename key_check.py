@@ -10,7 +10,7 @@ def configure():
 #tokenkey = OpenAI(api_token=os.getenv('api_token'))
 #modelOpenAI=tokenkey
 
-modelOpenAI=openai.api_key=os.getenv('api_token')
+modelOpenAI=openai.api_key=st.secrets["api_key"]
 from utils import get_data
 
 
