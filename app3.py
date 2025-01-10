@@ -41,7 +41,8 @@ if upload_csv is not None:
     with st.expander("Show data"):
         st.write(data)
 
-df = SmartDataframe(data, config={"llm": modelOpenAI})
+#df = SmartDataframe(data, config={"llm": modelOpenAI})
+df = SmartDataframe(data, config={"llm": "openai"})
 
 prompt = st.text_area("Masukan pertanyaan anda terkait data tersebut.")
 respon =""
