@@ -16,10 +16,10 @@ import string
 import re
 
 def configure():
-    load_dotenv()
 
 logo_url = './assets/logo.png'
-tokenkey = OpenAI(api_token=os.getenv('api_token'))
+tokenkey = st.secrets["api_key"]
+#tokenkey = OpenAI(api_token=os.getenv('api_token'))
 
 
 modelOpenAI=tokenkey
