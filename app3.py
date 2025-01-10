@@ -7,7 +7,6 @@ from pandasai.responses.response_type import ResponseType
 import streamlit as st
 import pandas as pd
 from pandasai import SmartDataframe
-from dotenv import load_dotenv
 import os
 import sklearn
 from PIL import Image
@@ -15,46 +14,47 @@ import io
 import string
 import re
 
-def configure():
-    logo_url = './assets/logo.png'
-    tokenkey = st.secrets["api_key"]
+from key_check import key_check
 
-    modelOpenAI=tokenkey
-    st.sidebar.image(logo_url)
-    st.image(logo_url,width=150)
-    st.title("BitDip A.I tools - for Data Analytics ")
+logo_url = './assets/logo.png'
+tokenkey = st.secrets["api_key"]
 
-    #upload_csv = st.file_uploader("upload file yang akan dianalisa dalam bentuk CSV", type=['csv'])
+modelOpenAI=tokenkey
+st.sidebar.image(logo_url)
+st.image(logo_url,width=150)
+st.title("BitDip A.I tools - for Data Analytics ")
 
-    file_type =["csv", "xlsx", "xls"]
-    upload_csv = st.file_uploader("Upload a data file", type=file_type)
+#upload_csv = st.file_uploader("upload file yang akan dianalisa dalam bentuk CSV", type=['csv'])
 
-    if upload_csv:
-        if upload_csv.name.endswith('.csv'):
-            data = pd.read_csv(upload_csv)
-        elif upload_csv.name.endswith('.xlsx') or upload_csv.name.endswith('.xls'):
-            data = pd.read_excel(upload_csv)
-        else:
-            data = None
+file_type =["csv", "xlsx", "xls"]
+upload_csv = st.file_uploader("Upload a data file", type=file_type)
 
-    if upload_csv is not None:
-        with st.expander("Show data"):
-            st.write(data)
+if upload_csv:
+    if upload_csv.name.endswith('.csv'):
+        data = pd.read_csv(upload_csv)
+    elif upload_csv.name.endswith('.xlsx') or upload_csv.name.endswith('.xls'):
+        data = pd.read_excel(upload_csv)
+    else:
+        data = None
 
-    df = SmartDataframe(data, config={"llm": modelOpenAI})
+if upload_csv is not None:
+    with st.expander("Show data"):
+        st.write(data)
 
-    prompt = st.text_area("Masukan pertanyaan anda terkait data tersebut.")
-    respon =""
-    if st.button("Cari Jawaban"):
-        if prompt:
-            with st.spinner("BitDip Agent melakukan anlisa data dan mencari jawaban untuk anda, mohon sabar cuy..."):
-                result = df.chat(prompt)
-                if isinstance(result, str):
-                    respon=result
-                    if ".png" in respon:
-                        st.image(respon)
-                    else:
-                        print(respon)
-                        st.write(respon)
+df = SmartDataframe(data, config={"llm": modelOpenAI})
+
+prompt = st.text_area("Masukan pertanyaan anda terkait data tersebut.")
+respon =""
+if st.button("Cari Jawaban"):
+    if prompt:
+        with st.spinner("BitDip Agent melakukan anlisa data dan mencari jawaban untuk anda, mohon sabar cuy..."):
+            result = df.chat(prompt)
+            if isinstance(result, str):
+                respon=result
+                if ".png" in respon:
+                    st.image(respon)
                 else:
-                    st.write(result)
+                    print(respon)
+                    st.write(respon)
+            else:
+                st.write(result)
