@@ -15,7 +15,6 @@ import io
 import string
 import re
 from key_check import key_check
-print(Config.schema())
 
 logo_url = './assets/logo.png'
 tokenkey = st.secrets["api_key"]
