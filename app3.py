@@ -4,6 +4,7 @@ from pandasai.llm.openai import OpenAI
 from pandasai.llm.openai import openai
 from pandasai.responses.response_parser import ResponseParser
 from pandasai.responses.response_type import ResponseType
+from pandasai.agent.base import Config
 import streamlit as st
 import pandas as pd
 from pandasai import SmartDataframe
@@ -14,6 +15,7 @@ import io
 import string
 import re
 from key_check import key_check
+print(Config.schema())
 
 logo_url = './assets/logo.png'
 tokenkey = st.secrets["api_key"]
